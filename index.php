@@ -2,7 +2,13 @@
 session_start();
 
 if (isset($_SESSION['usuario'])) {
-    header("Location: views/dashboard.php");
+
+    if ($_SESSION['rol'] == 'docente') {
+        header("Location: views/dashboard_docente.php");
+    } else {
+        header("Location: views/dashboard.php");
+    }
+
     exit();
 }
 ?>
@@ -12,6 +18,8 @@ if (isset($_SESSION['usuario'])) {
 <head>
 <meta charset="UTF-8">
 <title>INIF 48</title>
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
     body {
@@ -155,6 +163,28 @@ if (isset($_SESSION['usuario'])) {
 
     <a href="views/registro.php" class="registro">Crear cuenta</a>
 </div>
+
+<?php if (isset($_SESSION['error'])): ?>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: '¡Error!',
+        text: '<?php echo $_SESSION['error']; ?>',
+        confirmButtonColor: '#3498db'
+    });
+</script>
+<?php unset($_SESSION['error']); endif; ?>
+
+<?php if (isset($_SESSION['success'])): ?>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: '¡Éxito!',
+        text: '<?php echo $_SESSION['success']; ?>',
+        confirmButtonColor: '#2ecc71'
+    });
+</script>
+<?php unset($_SESSION['success']); endif; ?>
 
 </body>
 </html>

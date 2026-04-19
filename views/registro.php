@@ -7,6 +7,8 @@ session_start();
 <head>
 <meta charset="UTF-8">
 <title>Registro - INIF 48</title>
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
     body {
@@ -126,7 +128,7 @@ session_start();
 
         <input type="text" name="nombre" placeholder="Nombre completo" required>
         <input type="text" name="apellido" placeholder="Apellido completo" required>
-        <input type="text" name="dni" placeholder="DNI" required>
+        <input type="text" name="dni" placeholder="DNI" required maxlength="8" minlength="8" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 
         <input type="date" name="fecha_nacimiento" required>
 
@@ -151,6 +153,17 @@ session_start();
     <img src="../assets/img/logo.jpg" class="logo">
 
 </div>
+
+<?php if (isset($_SESSION['error'])): ?>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: '¡Error!',
+        text: '<?php echo $_SESSION['error']; ?>',
+        confirmButtonColor: '#3498db'
+    });
+</script>
+<?php unset($_SESSION['error']); endif; ?>
 
 </body>
 </html>
