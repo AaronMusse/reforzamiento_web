@@ -176,6 +176,7 @@ $num_notificaciones = get_count($conn, "SELECT COUNT(*) as total FROM notificaci
             <a href="notificaciones.php"><i class="fas fa-bell"></i> Notificaciones</a>
             <a href="reportes.php"><i class="fas fa-chart-bar"></i> Reportes</a>
             <a href="perfil.php"><i class="fas fa-user-circle"></i> Perfil</a>
+            <a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
         </div>
     </nav>
 

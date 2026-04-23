@@ -220,6 +220,7 @@ $num_notificaciones = $stmt->get_result()->fetch_assoc()['total'];
             <a href="mensajes.php"><i class="fas fa-comments"></i> Mensajes</a>
             <a href="notificaciones.php"><i class="fas fa-bell"></i> Notificaciones</a>
             <a href="perfil.php"><i class="fas fa-user"></i> Perfil</a>
+            <a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
         </div>
     </nav>
 
