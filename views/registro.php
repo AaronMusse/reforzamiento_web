@@ -138,12 +138,6 @@ session_start();
         <input type="password" name="password" placeholder="Contraseña" required>
         <input type="password" name="repetir_password" placeholder="Repetir contraseña" required>
 
-        <select name="rol" required>
-            <option value="">Seleccione rol</option>
-            <option value="alumna">Alumna</option>
-            <option value="docente">Docente</option>
-        </select>
-
         <button type="submit" class="btn registrar">Registrarse</button>
 
     </form>

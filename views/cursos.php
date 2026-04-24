@@ -173,7 +173,17 @@ $cursos = $controller->listarCursosDocente($_SESSION['user_id']);
                 <div class="curso-info">
                     <h3><?php echo htmlspecialchars($curso['nombre_curso']); ?></h3>
                     <p><?php echo htmlspecialchars(substr($curso['descripcion'], 0, 100)) . (strlen($curso['descripcion']) > 100 ? '...' : ''); ?></p>
-                    
+                    <div style="margin-bottom: 15px; font-size: 14px; color: #64748b;">
+                   <p style="margin: 5px 0;">
+                    <i class="fas fa-calendar-alt" style="color: #3b82f6;"></i>
+                        Inicio: <?php echo date('d/m/Y', strtotime($curso['fecha_inicio'])); ?>
+                           </p>
+
+                      <p style="margin: 5px 0;">
+                  <i class="fas fa-calendar-check" style="color: #16a34a;"></i>
+                      Fin: <?php echo date('d/m/Y', strtotime($curso['fecha_fin'])); ?>
+                        </p>
+                        </div>
                     <div style="margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                         <a href="curso_detalle.php?id=<?php echo $curso['id']; ?>" class="btn btn-primary" style="text-align:center;">
                             <i class="fas fa-eye"></i> Entrar

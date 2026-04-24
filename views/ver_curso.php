@@ -67,7 +67,19 @@ while($u = $res_unidades->fetch_assoc()) {
     <main class="main-content">
         <a href="mis_cursos.php" class="btn-back"><i class="fas fa-chevron-left"></i> Volver a la lista</a>
         <h1 style="color: var(--primary-color); margin: 0;"><?php echo htmlspecialchars($curso['nombre_curso']); ?></h1>
-        <p style="color: #64748b; margin-bottom: 40px;"><?php echo htmlspecialchars($curso['descripcion']); ?></p>
+       <p style="color: #64748b; margin-bottom: 15px;">
+    <?php echo htmlspecialchars($curso['descripcion']); ?>
+</p>
+
+<p style="color: #334155; margin-bottom: 40px; font-size: 14px;">
+    <strong>Fecha de inicio:</strong>
+    <?php echo date("d/m/Y", strtotime($curso['fecha_inicio'])); ?>
+
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+
+    <strong>Fecha de finalización:</strong>
+    <?php echo date("d/m/Y", strtotime($curso['fecha_fin'])); ?>
+</p>
 
         <?php foreach($unidades as $u): ?>
             <div class="unidad-card">

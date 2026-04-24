@@ -30,14 +30,15 @@ $repetir_correo = $_POST['repetir_correo'] ?? '';
 $password = $_POST['password'] ?? '';
 $repetir_password = $_POST['repetir_password'] ?? '';
 
-$rol = $_POST['rol'] ?? '';
+// Forzamos el rol a 'alumna' para registros públicos
+$rol = 'alumna';
 
 // VALIDACIONES 🔥
 
 // Campos obligatorios
 if (
     empty($nombre) || empty($apellido) || empty($dni) || empty($fecha_nacimiento) ||
-    empty($correo) || empty($repetir_correo) || empty($password) || empty($repetir_password) || empty($rol)
+    empty($correo) || empty($repetir_correo) || empty($password) || empty($repetir_password)
 ) {
     $_SESSION['error'] = "Todos los campos son obligatorios";
     header("Location: ../views/registro.php");

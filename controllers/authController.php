@@ -24,17 +24,25 @@ if ($result->num_rows > 0) {
         $_SESSION['usuario'] = $user['nombre'];
         $_SESSION['rol'] = $user['rol'];
 
-        if ($_SESSION['rol'] == 'docente') {
+        // REDIRECCIÓN SEGÚN ROL
+        if ($_SESSION['rol'] == 'admin') {
+            header("Location: ../views/dashboard_admin.php");
+        } 
+        elseif ($_SESSION['rol'] == 'docente') {
             header("Location: ../views/dashboard_docente.php");
-        } else {
+        } 
+        else {
             header("Location: ../views/dashboard.php");
         }
+
         exit();
+
     } else {
         $_SESSION['error'] = "Contraseña incorrecta";
         header("Location: ../index.php");
         exit();
     }
+
 } else {
     $_SESSION['error'] = "Usuario no encontrado";
     header("Location: ../index.php");

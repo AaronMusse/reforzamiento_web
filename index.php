@@ -3,9 +3,13 @@ session_start();
 
 if (isset($_SESSION['usuario'])) {
 
-    if ($_SESSION['rol'] == 'docente') {
+    if ($_SESSION['rol'] == 'admin') {
+        header("Location: views/dashboard_admin.php");
+    } 
+    elseif ($_SESSION['rol'] == 'docente') {
         header("Location: views/dashboard_docente.php");
-    } else {
+    } 
+    else {
         header("Location: views/dashboard.php");
     }
 
