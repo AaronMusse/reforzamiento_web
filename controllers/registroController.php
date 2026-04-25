@@ -68,6 +68,17 @@ if ($edad < 10) {
     exit();
 }
 
+// Validar dominios permitidos de correo
+$dominios_permitidos = ['gmail.com', 'hotmail.com', 'outlook.com', 'inif48.edu.pe'];
+
+$partes_correo = explode('@', $correo);
+
+if (count($partes_correo) != 2 || !in_array($partes_correo[1], $dominios_permitidos)) {
+    $_SESSION['error'] = "Solo se permiten correos con dominio gmail.com, hotmail.com, outlook.com o inif48.edu.pe";
+    header("Location: ../views/registro.php");
+    exit();
+}
+
 // Correos iguales
 if ($correo !== $repetir_correo) {
     $_SESSION['error'] = "Los correos no coinciden";

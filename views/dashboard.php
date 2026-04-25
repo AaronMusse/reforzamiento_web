@@ -16,19 +16,19 @@ $num_actividades = 0;
 $num_notificaciones = 0;
 
 // Cursos matriculados
-$stmt = $conn->prepare("SELECT COUNT(*) as total FROM matriculas WHERE alumna_id = ?");
+$stmt = $conn->prepare("SELECT COUNT(*) as total FROM matriculas WHERE alumno_id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $num_cursos = $stmt->get_result()->fetch_assoc()['total'];
 
 // Entregas pendientes
-$stmt = $conn->prepare("SELECT COUNT(*) as total FROM entregas WHERE alumna_id = ? AND estado = 'pendiente'");
+$stmt = $conn->prepare("SELECT COUNT(*) as total FROM entregas WHERE alumno_id = ? AND estado = 'pendiente'");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $num_actividades = $stmt->get_result()->fetch_assoc()['total'];
 
 // Notificaciones no leídas
-$stmt = $conn->prepare("SELECT COUNT(*) as total FROM notificaciones WHERE usuario_id = ? AND leido = 0");
+$stmt = $conn->prepare("SELECT COUNT(*) as total FROM notificaciones WHERE alumno_id = ? AND estado = 'pendiente'");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $num_notificaciones = $stmt->get_result()->fetch_assoc()['total'];

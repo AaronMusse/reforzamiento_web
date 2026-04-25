@@ -146,7 +146,7 @@ body {
         <a href="dashboard_admin.php" class="active">
             <i class="fas fa-home"></i> Inicio
         </a>
-
+       
         <a href="crear_docente.php">
             <i class="fas fa-user-plus"></i> Crear Docente
         </a>
@@ -154,7 +154,15 @@ body {
         <a href="lista_docentes.php">
             <i class="fas fa-users"></i> Docentes
         </a>
-
+        <a href="ver_usuarios.php">
+    <i class="fas fa-users"></i> Ver Usuarios
+        </a>
+        <a href="gestionar_cursos.php">
+    <i class="fas fa-book"></i> Gestionar Cursos
+        </a>
+<a href="lista_cursos_admin.php">
+    <i class="fas fa-book"></i> Cursos
+</a>
         <a href="../logout.php">
             <i class="fas fa-sign-out-alt"></i> Salir
         </a>
@@ -200,7 +208,21 @@ body {
                 Ver lista
             </a>
         </div>
-
+        
+        <div class="card">
+    <h3><i class="fas fa-book"></i> Gestionar Cursos</h3>
+    <p>Visualizar y administrar cursos creados por docentes.</p>
+    <a href="gestionar_cursos.php" class="quick-btn">
+        Ver cursos
+        </a>
+        </div>
+<div class="card">
+    <h3><i class="fas fa-users"></i> Ver Usuarios</h3>
+    <p>Visualizar todos los usuarios registrados del sistema.</p>
+    <a href="ver_usuarios.php" class="quick-btn">
+        Ver ahora
+    </a>
+</div>
     </div>
 
 </main>

@@ -6,121 +6,160 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] != 'admin') {
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <title>Crear Docente - INIF 48</title>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background: #f8fafc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
 .container {
+    max-width: 700px;
+    margin: 40px auto;
     background: white;
     padding: 35px;
-    border-radius: 18px;
-    width: 420px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 h2 {
     margin-top: 0;
     color: #1e3a8a;
-    text-align: center;
+}
+
+p {
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
 }
 
 input {
     width: 100%;
     padding: 12px;
-    margin: 8px 0;
-    border: 1px solid #dbeafe;
+    border: 1px solid #cbd5e1;
     border-radius: 10px;
-    box-sizing: border-box;
+    outline: none;
+    font-size: 14px;
 }
 
-button {
+.full {
+    grid-column: span 2;
+}
+
+.btn {
+    margin-top: 20px;
     width: 100%;
-    padding: 12px;
-    background: #2563eb;
-    color: white;
+    padding: 14px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
+    background: #3b82f6;
+    color: white;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
+    font-size: 15px;
 }
 
-button:hover {
-    background: #1d4ed8;
+.btn:hover {
+    background: #2563eb;
 }
 
 .back {
-    display: block;
-    text-align: center;
-    margin-top: 15px;
+    display: inline-block;
+    margin-top: 20px;
     text-decoration: none;
-    color: #64748b;
+    color: #334155;
+    font-weight: 600;
 }
 </style>
 </head>
 <body>
 
 <div class="container">
+
     <h2>Registrar Nuevo Docente</h2>
+    <p>Solo el administrador puede crear cuentas de docentes</p>
 
     <form method="POST" action="../controllers/docenteController.php">
 
-        <input type="text" name="nombre" placeholder="Nombre" required>
+        <div class="form-grid">
 
-        <input type="text" name="apellido" placeholder="Apellido" required>
+            <input type="text" name="nombre" placeholder="Nombre" required>
 
-        <input 
-            type="text" 
-            name="dni" 
-            placeholder="DNI" 
-            maxlength="8" 
-            minlength="8"
-            required
-        >
+            <input type="text" name="apellido" placeholder="Apellido" required>
 
-        <input 
-            type="date" 
-            name="fecha_nacimiento" 
-            required
-        >
+            <input 
+                type="text" 
+                name="dni" 
+                placeholder="DNI" 
+                maxlength="8"
+                minlength="8"
+                required
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+            >
 
-        <input 
-            type="email" 
-            name="correo" 
-            placeholder="Correo institucional" 
-            required
-        >
+            <input type="date" name="fecha_nacimiento" required>
 
-        <input 
-            type="password" 
-            name="password" 
-            placeholder="Contraseña" 
-            required
-        >
+            <input 
+                type="email" 
+                name="correo" 
+                placeholder="Correo electrónico" 
+                class="full"
+                required
+            >
 
-        <button type="submit">
+            <input 
+                type="password" 
+                name="password" 
+                placeholder="Contraseña"
+                class="full"
+                required
+            >
+
+        </div>
+
+        <button type="submit" class="btn">
             Crear Docente
         </button>
 
     </form>
 
     <a href="dashboard_admin.php" class="back">
-        ← Volver al Panel Admin
+        ← Volver al panel administrador
     </a>
+
 </div>
+
+<?php if (isset($_SESSION['error'])): ?>
+<script>
+Swal.fire({
+    icon: 'error',
+    title: 'Error',
+    text: '<?php echo $_SESSION['error']; ?>'
+});
+</script>
+<?php unset($_SESSION['error']); endif; ?>
+
+<?php if (isset($_SESSION['success'])): ?>
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Éxito',
+    text: '<?php echo $_SESSION['success']; ?>'
+});
+</script>
+<?php unset($_SESSION['success']); endif; ?>
 
 </body>
 </html>

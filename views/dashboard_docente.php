@@ -172,8 +172,8 @@ $num_notificaciones = get_count($conn, "SELECT COUNT(*) as total FROM notificaci
             <a href="cursos.php"><i class="fas fa-chalkboard-teacher"></i> Cursos</a>
             <a href="actividades.php"><i class="fas fa-edit"></i> Actividades</a>
             <a href="examenes.php"><i class="fas fa-file-alt"></i> Exámenes</a>
-            <a href="mensajes.php"><i class="fas fa-envelope"></i> Mensajes</a>
-            <a href="notificaciones.php"><i class="fas fa-bell"></i> Notificaciones</a>
+            <a href="mensajes_docente.php"><i class="fas fa-envelope"></i> Mensajes</a>
+            <a href="notificaciones_docente.php"><i class="fas fa-bell"></i> Notificaciones</a>
             <a href="reportes.php"><i class="fas fa-chart-bar"></i> Reportes</a>
             <a href="perfil.php"><i class="fas fa-user-circle"></i> Perfil</a>
             <a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Salir</a>

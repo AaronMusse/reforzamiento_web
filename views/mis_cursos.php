@@ -12,7 +12,7 @@ $user_id = $_SESSION['user_id'];
 // Obtener cursos donde la alumna está matriculada
 $query = "SELECT c.* FROM cursos c 
           JOIN matriculas m ON c.id = m.curso_id 
-          WHERE m.alumna_id = ?";
+          WHERE m.alumno_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -109,9 +109,17 @@ $cursos = $stmt->get_result();
                 ?>
                 <div class="curso-card">
                     <div class="curso-image" style="background-image: url('<?php echo $imgPath; ?>');"></div>
-                    <div class="curso-info">
-                        <h3><?php echo htmlspecialchars($curso['nombre_curso']); ?></h3>
-                        <p><?php echo htmlspecialchars(substr($curso['descripcion'], 0, 80)) . (strlen($curso['descripcion']) > 80 ? '...' : ''); ?></p>
+                   <div class="curso-info">
+    <h3><?php echo htmlspecialchars($curso['nombre_curso']); ?></h3>
+
+    <p>
+        <?php echo htmlspecialchars(substr($curso['descripcion'], 0, 80)) . (strlen($curso['descripcion']) > 80 ? '...' : ''); ?>
+    </p>
+
+    <p style="font-size: 13px; color: #475569;">
+        <strong>Inicio:</strong> <?php echo date("d/m/Y", strtotime($curso['fecha_inicio'])); ?><br>
+        <strong>Fin:</strong> <?php echo date("d/m/Y", strtotime($curso['fecha_fin'])); ?>
+    </p>
                         <a href="ver_curso.php?id=<?php echo $curso['id']; ?>" class="btn">Entrar al Curso</a>
                     </div>
                 </div>
